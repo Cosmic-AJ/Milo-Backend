@@ -1,0 +1,35 @@
+Login:
+
+request:
+{
+    "username":"aushjain",
+    "password":"12345"
+}
+
+response:
+{
+    "_id": "614a2c796aeee93c3241a144",
+    "name": "Rakesh",
+    "username": "aushjain",
+    "email": "ayushjain@science.christuniversity.in",
+    "avatar": "avatar1",
+    "password": "827ccb0eea8a706c4c34a16891f84e7b"
+}
+
+
+SignUp:
+
+request:
+{
+    "name":"Rakesh",
+    "username":"aushjain",
+    "email": "ayushjain@science.christuniversity.in",
+    "avatar":"avatar1",
+    "password":"12345"
+}
+
+response:
+{
+    "acknowledged": true,
+    "insertedId": "614a2d5c9ea3936adb810aae"
+}
