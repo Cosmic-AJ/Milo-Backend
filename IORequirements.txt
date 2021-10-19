@@ -2,18 +2,17 @@ Login:
 
 request:
 {
-    "username":"aushjain",
+    "email": "ayushjain@science.christuniversity.in",
     "password":"12345"
 }
 
-response:
+response (201):
 {
-    "_id": "614a2c796aeee93c3241a144",
+    "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF5dXNoamFpbkBzY2llbmNlLmNocmlzdHVuaXZlcnNpdHkuaW4iLCJpYXQiOjE2MzQ2NTA5NjUsImV4cCI6MTYzNDY1ODE2NX0.5rlDNzSMoKFlhvkXEBdRNuvOxF9KD6meFQaOCICwJ28",
     "name": "Rakesh",
-    "username": "aushjain",
+    "username": "kkkshjain",
     "email": "ayushjain@science.christuniversity.in",
-    "avatar": "avatar1",
-    "password": "827ccb0eea8a706c4c34a16891f84e7b"
+    "avatar": "avatar1"
 }
 
 
@@ -22,15 +21,17 @@ SignUp:
 request:
 {
     "name":"Rakesh",
-    "username":"aushjain",
+    "username":"kkkshjain",
     "email": "ayushjain@science.christuniversity.in",
     "avatar":"avatar1",
     "password":"12345"
 }
 
-response:
+response (201):
 {
-    "acknowledged": true,
-    "insertedId": "614a2d5c9ea3936adb810aae"
-}.  
- j
+    "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF5dXNoamFpbkBzY2llbmNlLmNocmlzdHVuaXZlcnNpdHkuaW4iLCJpYXQiOjE2MzQ2NTA5NjUsImV4cCI6MTYzNDY1ODE2NX0.5rlDNzSMoKFlhvkXEBdRNuvOxF9KD6meFQaOCICwJ28",
+    "name": "Rakesh",
+    "username": "kkkshjain",
+    "email": "ayushjain@science.christuniversity.in",
+    "avatar": "avatar1"
+}
