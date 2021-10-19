@@ -8,11 +8,14 @@ request:
 
 response (201):
 {
-    "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF5dXNoamFpbkBzY2llbmNlLmNocmlzdHVuaXZlcnNpdHkuaW4iLCJpYXQiOjE2MzQ2NTA5NjUsImV4cCI6MTYzNDY1ODE2NX0.5rlDNzSMoKFlhvkXEBdRNuvOxF9KD6meFQaOCICwJ28",
+    "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjE2ZWQxYTM0YmFkZjEzZjdiMGVhNzFiIiwiZW1haWwiOiJheXVzaGphaW5Ac2NpZW5jZS5jaHJpc3R1bml2ZXJzaXR5LmluIiwiaWF0IjoxNjM0NjUyNjI0LCJleHAiOjE2MzQ2NTk4MjR9.mn60gPTjVUlzvQ1OAGzFx3JuAcWyK1JO9YoxahhduJA",
     "name": "Rakesh",
     "username": "kkkshjain",
     "email": "ayushjain@science.christuniversity.in",
-    "avatar": "avatar1"
+    "avatar": "avatar1",
+    "exp": 1,
+    "money": 1000,
+    "desc": null
 }
 
 # Endpoint https://milo-back-end.herokuapp.com/signup
@@ -28,9 +31,12 @@ request:
 
 response (201):
 {
-    "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF5dXNoamFpbkBzY2llbmNlLmNocmlzdHVuaXZlcnNpdHkuaW4iLCJpYXQiOjE2MzQ2NTA5NjUsImV4cCI6MTYzNDY1ODE2NX0.5rlDNzSMoKFlhvkXEBdRNuvOxF9KD6meFQaOCICwJ28",
+    "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF5dXNoamFpbkBzY2llbmNlLmNocmlzdHVuaXZlcnNpdHkuaW4iLCJpYXQiOjE2MzQ2NTI0NDksImV4cCI6MTYzNDY1OTY0OX0.klFJHP7QipPa7puLsgRPob8EMiTwIKgQFF-z4MsAOf4",
     "name": "Rakesh",
     "username": "kkkshjain",
     "email": "ayushjain@science.christuniversity.in",
-    "avatar": "avatar1"
+    "avatar": "avatar1",
+    "exp": 1,
+    "money": 1000,
+    "desc": null
 }
