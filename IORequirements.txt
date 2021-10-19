@@ -1,4 +1,4 @@
-Login:
+# Endpoint: https://milo-back-end.herokuapp.com/login
 
 request:
 {
@@ -15,8 +15,7 @@ response (201):
     "avatar": "avatar1"
 }
 
-
-SignUp:
+# Endpoint https://milo-back-end.herokuapp.com/signup
 
 request:
 {
