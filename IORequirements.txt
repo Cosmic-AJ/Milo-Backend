@@ -42,6 +42,44 @@ response (201):
 }
 
 
-kjknjj
-ggj
-jnjjjh 
+# Endpoint https://milo-back-end.herokuapp.com/shop
+(GET)
+response:
+[
+    {
+        "_id": "6171ae646ff08403b37b6ce1",
+        "name": "ROOM PASS",
+        "desc": "It gives you access to any 1 room of your choice that is available on the map",
+        "image": "https://res.cloudinary.com/milo-website/image/upload/v1634841935/Shop/vip-pass_seac3w.png",
+        "price": 200,
+        "quantity": 30
+    },
+    {
+        "_id": "6171b5996ff08403b37b6ce2",
+        "name": "PRIVILEGE ACCESS",
+        "desc": "It is highest access given to a user which allows him to go to any place in the map for 1 month.",
+        "image": "https://res.cloudinary.com/milo-website/image/upload/v1634841935/Shop/offer_kqakz1.png",
+        "price": 5000,
+        "quantity": 10
+    }
+]
+
+(POST) - for updating the stock for the user
+request:
+{    "jwt":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjE3MWNhZTlhYzc0ZGQ4ZDljZWQxN2U5IiwiZW1haWwiOiJheXVzamFAc2NpZW5jZS5jaHJpc3R1bml2ZXJzaXR5LmluIiwiaWF0IjoxNjM0ODUwMDM0LCJleHAiOjE2MzQ4NTcyMzR9._M9brFFuUuZRmLFFV0myW9WaKrZ4Rhxvspt_pSWaQug",
+    "_id": "6171ae646ff08403b37b6ce1"
+}
+
+response:
+{
+    "message": "Item Purchased Successfully."
+}
+||
+{
+    "error": "Invalid Shop Item id."
+}
+||
+{
+    "error": "Item already purchased"
+}
+||
