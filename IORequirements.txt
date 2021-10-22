@@ -8,14 +8,17 @@ request:
 
 response (201):
 {
-    "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjE2ZWQxYTM0YmFkZjEzZjdiMGVhNzFiIiwiZW1haWwiOiJheXVzaGphaW5Ac2NpZW5jZS5jaHJpc3R1bml2ZXJzaXR5LmluIiwiaWF0IjoxNjM0NjUyNjI0LCJleHAiOjE2MzQ2NTk4MjR9.mn60gPTjVUlzvQ1OAGzFx3JuAcWyK1JO9YoxahhduJA",
-    "name": "Rakesh",
-    "username": "kkkshjain",
-    "email": "ayushjain@science.christuniversity.in",
-    "avatar": "avatar1",
+    "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjE3MWUyNDQwYzdjMDBjYzM3Y2U1ZGIzIiwiZW1haWwiOiJheXVzaEBnbWFpbC5jb20iLCJpYXQiOjE2MzQ4NzY5OTgsImV4cCI6MTYzNzQ2ODk5OH0.NmNQwRvHdgVs3jen87JbTpdwjyybd700CMarpvVCsHE",
+    "name": "Ayush",
+    "username": "ayush",
+    "email": "ayush@gmail.com",
+    "avatar": "beard_red_boy",
     "exp": 1,
-    "money": 1000,
-    "desc": null
+    "money": 9600,
+    "desc": null,
+    "shopItems": [
+        "6171ae646ff08403b37b6ce1"
+    ]
 }
 
 # Endpoint https://milo-back-end.herokuapp.com/signup
@@ -31,14 +34,15 @@ request:
 
 response (201):
 {
-    "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF5dXNoamFpbkBzY2llbmNlLmNocmlzdHVuaXZlcnNpdHkuaW4iLCJpYXQiOjE2MzQ2NTI0NDksImV4cCI6MTYzNDY1OTY0OX0.klFJHP7QipPa7puLsgRPob8EMiTwIKgQFF-z4MsAOf4",
-    "name": "Rakesh",
-    "username": "kkkshjain",
-    "email": "ayushjain@science.christuniversity.in",
+    "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjE3MjNlN2UxOTdmZTUzY2UxMTQ3NDIzIiwiZW1haWwiOiJhdXNAZ2FpbC5jb20iLCJpYXQiOjE2MzQ4NzcwNTQsImV4cCI6MTYzNzQ2OTA1NH0.BfOfiDyn4vjDjGSmgf-tAPrNVRTurKc3gMIhg_iXANQ",
+    "name": "Ayush",
+    "username": "sa",
+    "email": "aus@gail.com",
     "avatar": "avatar1",
     "exp": 1,
-    "money": 1000,
-    "desc": null
+    "money": 10000,
+    "desc": null,
+    "shopItems": []
 }
 
 
