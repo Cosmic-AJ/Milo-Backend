@@ -87,3 +87,18 @@ response:
 {
     "error": "Item already purchased"
 }
+
+
+# Endpoint https://milo-back-end.herokuapp.com/contact
+(POST)
+request:
+{
+    "email": "ayush@gmail.com",
+    "name":"Ayush Jain",
+    "message": "Dummy text"
+}
+
+response:
+{
+    "message": "Response submitted successfully."
+}
