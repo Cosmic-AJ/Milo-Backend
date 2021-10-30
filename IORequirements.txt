@@ -118,7 +118,7 @@ Authentication Header: JWT eyJhbGciOiJIUzI1NiIsInR5cC4A4
 }
 
 response:
-// data is already sorted in descending order
+// data is already sorted in descending order for Dinosaur, Tic Tac Toe and Maths on the basis of score
 [
     {
         "username": "ayush123",
@@ -131,3 +131,38 @@ response:
         "timePlayed": 25
     }
 ]
+// data is already sorted in increasing order for Memory on the basis of score
+[
+    {
+        "username": "ayush123",
+        "score": 20,
+        "timePlayed": 1
+    },
+    {
+        "username": "ayuh123",
+        "score": 30,
+        "timePlayed": 4
+    }
+]
+
+
+
+# Endpoint: https://milo-back-end.herokuapp.com/game
+(POST)
+request:
+Authentication Header: JWT eyJhbGciOiJIUzI1NiIsInR5cC4A4
+{
+    "game": "Dinosaur", // or "Maths" or "Memory" or "Tic Tac Toe" 
+    "score": 
+    3000 // for "Dinosaur", "Maths", "Memory"
+    // 0 or 1 for "Tic Tac Toe"
+}
+
+response:
+{
+    "message": "Score Updated Successfully."
+}
+||
+{
+    "error": "Invalid Game"
+}
