@@ -1,5 +1,5 @@
 # Endpoint: https://milo-back-end.herokuapp.com/login
-
+(POST)
 request:
 {
     "email": "ayushjain@science.christuniversity.in",
@@ -22,7 +22,7 @@ response (201):
 }
 
 # Endpoint https://milo-back-end.herokuapp.com/signup
-
+(POST)
 request:
 {
     "name":"Rakesh",
@@ -44,6 +44,23 @@ response (201):
     "desc": null,
     "shopItems": []
 }
+
+
+
+# Endpoint https://milo-back-end.herokuapp.com/contact
+(POST)
+request:
+{
+    "email": "ayush@gmail.com",
+    "name":"Ayush Jain",
+    "message": "Dummy text"
+}
+
+response:
+{
+    "message": "Response submitted successfully."
+}
+
 
 
 # Endpoint https://milo-back-end.herokuapp.com/shop
@@ -68,6 +85,8 @@ response:
     }
 ]
 
+
+# Endpoint https://milo-back-end.herokuapp.com/shop
 (POST) - for updating the stock for the user
 request:
 Authentication Header: JWT eyJhbGciOiJIUzI1NiIsInR5cC4A4
@@ -89,18 +108,26 @@ response:
 }
 
 
-# Endpoint https://milo-back-end.herokuapp.com/contact
+
+# Endpoint https://milo-back-end.herokuapp.com/leaderboard
 (POST)
 request:
+Authentication Header: JWT eyJhbGciOiJIUzI1NiIsInR5cC4A4
 {
-    "email": "ayush@gmail.com",
-    "name":"Ayush Jain",
-    "message": "Dummy text"
+    "game": "Dinosaur"
 }
 
 response:
-{
-    "message": "Response submitted successfully."
-}
-
-jhhb 
+// data is already sorted in descending order
+[
+    {
+        "username": "ayush123",
+        "score": 1300,
+        "timePlayed": 10
+    },
+    {
+        "username": "yashika",
+        "score": 1100,
+        "timePlayed": 25
+    }
+]
