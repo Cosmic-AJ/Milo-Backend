@@ -8,18 +8,27 @@ request:
 
 response (201):
 {
-    "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjE3MWUyNDQwYzdjMDBjYzM3Y2U1ZGIzIiwiZW1haWwiOiJheXVzaEBnbWFpbC5jb20iLCJpYXQiOjE2MzQ4NzY5OTgsImV4cCI6MTYzNzQ2ODk5OH0.NmNQwRvHdgVs3jen87JbTpdwjyybd700CMarpvVCsHE",
+    "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjE3Mzk5MDI0ZDM0MTU2N2IzNThiMTQxIiwiZW1haWwiOiJheXVzaEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImF5dXNoMTIzIiwiaWF0IjoxNjM1ODc2OTQ4LCJleHAiOjE2Mzg0Njg5NDh9.Er05syl5yn-qfOc_CU1OoNpR53TBO8Q6aJ2jpYZYcfU",
     "name": "Ayush",
-    "username": "ayush",
+    "username": "ayush123",
     "email": "ayush@gmail.com",
-    "avatar": "beard_red_boy",
+    "avatar": "graduation_purple_boy",
     "exp": 1,
-    "money": 9600,
+    "money": 8800,
     "desc": null,
     "shopItems": [
-        "6171ae646ff08403b37b6ce1"
+        {
+            "id": "6171ae646ff08403b37b6ce1",
+            "name": "ROOM PASS"
+        },
+        {
+            "id": "6171b5996ff08403b37b6ce2",
+            "name": "PRIVILEGE ACCESS"
+        }
     ]
 }
+
+
 
 # Endpoint https://milo-back-end.herokuapp.com/signup
 (POST)
