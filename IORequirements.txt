@@ -176,5 +176,4 @@ response:
     "error": "Invalid Game"
 }
 Gggh
-Gggg
 Ggg
