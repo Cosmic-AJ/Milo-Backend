@@ -1,0 +1,2320 @@
+<html>
+  <head>
+    <style id="st_globalStyles">
+      /* SCROLLBAR */
+
+      [dark-scroll]::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+
+      [dark-scroll]::-webkit-scrollbar-track-piece {
+        background-color: #2b2b2b;
+        border: 1px solid #1d1d1d;
+      }
+
+      [dark-scroll]::-webkit-scrollbar-thumb {
+        height: 10px;
+        background-color: #4d4d4d;
+      }
+      [dark-scroll]::-webkit-scrollbar-thumb:hover {
+        background-color: #5a5a5a;
+      }
+
+      /* LOAD PROGRESS */
+
+      .turbolinks-progress-bar {
+        height: 3px;
+        background-color: #ff6250;
+      }
+
+      /* GROUPING */
+
+      [data-id].ui-selecting {
+        box-shadow: inset 0 0 0 1px #4285f4 !important;
+      }
+      [data-id].ui-selected {
+        box-shadow: inset 0 0 0 1px #4285f4 !important;
+      }
+
+      /* CURSOR */
+
+      body[mode="comments"] * {
+        cursor: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAzMCAzMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00LjkxNjQ4IDIzLjQxMDlDNS40OTE1MyAyMi45ODg3IDUuOTMxNzkgMjIuMzkzNSA2LjIzMjggMjEuNjQwN0M0Ljc5MDY5IDE5LjczODMgNCAxNy4zOTMzIDQgMTQuOTk3NUM0IDguOTM0MSA4LjkzMjgyIDQgMTUuMDAyMiA0QzIxLjA3MTcgNCAyNiA4LjkzOTE5IDI2IDE1LjAwMjVDMjYgMjEuMDY1OSAyMS4wNjcyIDI2IDE0Ljk5NzggMjZDMTIuOTg5NiAyNiAxMS4wMzUzIDI1LjQ1NTcgOS4zMjM2NyAyNC40MjMxQzguNDI5NjUgMjQuOTU3MiA3LjQxNDM0IDI1LjIyNjggNi4zMDAxOCAyNS4yMjY4QzUuOTU0MjYgMjUuMjI2OCA1LjU5OTM1IDI1LjIwMTQgNS4yNTM0MiAyNS4xNDU0QzQuOTAzIDI1LjA4OTUgNC42Mjg5NiAyNC44MDQ2IDQuNTUyNTggMjQuNDE4QzQuNDc2MjEgMjQuMDI2NCA0LjYxOTk3IDIzLjYyOTYgNC45MTY0OCAyMy40MTA5WiIgZmlsbD0iI0ZGNjI1MCIvPgo8L3N2Zz4K")
+            0 24,
+          auto !important;
+      }
+
+      body[mode="code"] [data-id]:not(.hidden) {
+        cursor: default !important;
+      }
+
+      /* default node state */
+
+      body[mode="code"] [data-id]:not(.hidden),
+      body[mode="comments"] [data-id]:not(.hidden) {
+        pointer-events: all !important;
+      }
+
+      /* is_image */
+
+      body[mode="code"] [data-id].is_image [data-id],
+      body[mode="comments"] [data-id].is_image [data-id] {
+        pointer-events: none !important;
+      }
+
+      /* without a data-id or ignored */
+
+      [data-id].ignore,
+      body[mode="code"] *:not([data-id]) {
+        pointer-events: none !important;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, maximum-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="https://res.cloudinary.com/milo-website/image/upload/v1634917997/Images/icon_udirug.png"
+    />
+    <title>Milo.io</title>
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="photo" />
+    <style id="hotspots-styles">
+      .hotspot {
+        position: absolute;
+        border: 1px solid #2a9fd8;
+        background: rgba(0, 173, 255, 0.54);
+        opacity: 0;
+        z-index: -1;
+      }
+    </style>
+    <style>
+      @import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+
+      @import url("https://fonts.googleapis.com/css?family=Inter:400,700,300,500,800|Noto+Sans+Mono:400");
+
+      .screen textarea:focus,
+      .screen input:focus {
+        outline: none;
+      }
+
+      .screen * {
+        -webkit-font-smoothing: antialiased;
+        box-sizing: border-box;
+      }
+
+      .screen div {
+        -webkit-text-size-adjust: none;
+      }
+
+      .component-wrapper a {
+        display: contents;
+        pointer-events: auto;
+        text-decoration: none;
+      }
+
+      .component-wrapper * {
+        -webkit-font-smoothing: antialiased;
+        box-sizing: border-box;
+        pointer-events: none;
+      }
+
+      .component-wrapper a *,
+      .component-wrapper input,
+      .component-wrapper video,
+      .component-wrapper iframe {
+        pointer-events: auto;
+      }
+
+      .component-wrapper.not-ready,
+      .component-wrapper.not-ready * {
+        visibility: hidden !important;
+      }
+
+      .screen a {
+        display: contents;
+        text-decoration: none;
+      }
+
+      .full-width-a {
+        width: 100%;
+      }
+
+      .full-height-a {
+        height: 100%;
+      }
+
+      .container-center-vertical {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .container-center-vertical > * {
+        flex-shrink: 0;
+        pointer-events: auto;
+      }
+
+      .container-center-horizontal {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        pointer-events: none;
+        width: 100%;
+      }
+
+      .container-center-horizontal > * {
+        flex-shrink: 0;
+        pointer-events: auto;
+      }
+
+      .auto-animated div {
+        --z-index: -1;
+        opacity: 0;
+        position: absolute;
+      }
+
+      .auto-animated .container-center-vertical,
+      .auto-animated .container-center-horizontal {
+        opacity: 1;
+      }
+
+      .overlay {
+        display: none;
+        height: 100%;
+        opacity: 0;
+        position: fixed;
+        top: 0;
+        width: 100%;
+      }
+
+      .overlay.animate-appear {
+        animation: reveal 0.3s ease-in-out 1 normal forwards;
+        display: block;
+        opacity: 0;
+      }
+
+      .overlay.animate-disappear {
+        animation: reveal 0.3s ease-in-out 1 reverse forwards;
+        display: block;
+        opacity: 1;
+      }
+
+      @keyframes reveal {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .animate-nodelay {
+        animation-delay: 0s;
+      }
+
+      .align-self-flex-start {
+        align-self: flex-start;
+      }
+
+      .align-self-flex-end {
+        align-self: flex-end;
+      }
+
+      .align-self-flex-center {
+        align-self: flex-center;
+      }
+
+      .valign-text-middle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .valign-text-bottom {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+
+      input:focus {
+        outline: none;
+      }
+
+      .listeners-active,
+      .listeners-active * {
+        pointer-events: auto;
+      }
+
+      .hidden,
+      .hidden * {
+        pointer-events: none;
+        visibility: hidden;
+      }
+
+      .smart-layers-pointers,
+      .smart-layers-pointers * {
+        pointer-events: auto;
+        visibility: visible;
+      }
+
+      .listeners-active-click,
+      .listeners-active-click * {
+        cursor: pointer;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      :root {
+        --eerie-black: #18191f;
+        --licorice: #151515;
+        --manatee: #969bab;
+        --white: #ffffff;
+
+        --font-size-l: 24px;
+        --font-size-m: 20px;
+        --font-size-s: 18.7px;
+        --font-size-xl: 32px;
+        --font-size-xs: 18px;
+        --font-size-xxl: 48px;
+        --font-size-xxxl: 72px;
+
+        --font-family-inter: "Inter", Helvetica;
+        --font-family-noto_sans_mono: "Noto Sans Mono", Helvetica;
+      }
+      .inter-normal-white-20px {
+        color: var(--white);
+        font-family: var(--font-family-inter);
+        font-size: var(--font-size-m);
+        font-style: normal;
+        font-weight: 400;
+      }
+
+      .notosansmono-normal-white-32px {
+        color: var(--white);
+        font-family: var(--font-family-noto_sans_mono);
+        font-size: var(--font-size-xl);
+        font-style: normal;
+        font-weight: 400;
+      }
+
+      .inter-medium-white-18-7px {
+        color: var(--white);
+        font-family: var(--font-family-inter);
+        font-size: var(--font-size-s);
+        font-style: normal;
+        font-weight: 500;
+      }
+
+      .inter-bold-eerie-black-24px {
+        color: var(--eerie-black);
+        font-family: var(--font-family-inter);
+        font-size: var(--font-size-l);
+        font-style: normal;
+        font-weight: 700;
+      }
+
+      .inter-medium-manatee-18px {
+        color: var(--manatee);
+        font-family: var(--font-family-inter);
+        font-size: var(--font-size-xs);
+        font-style: normal;
+        font-weight: 500;
+      }
+
+      /* screen - desktop-1 */
+
+      .desktop-1 {
+        background-color: var(--white);
+        height: 4685.33px;
+        mix-blend-mode: normal;
+        overflow: hidden;
+        overflow-x: hidden;
+        position: relative;
+        width: 1920px;
+      }
+
+      .desktop-1 .rectangle-1-Ys8k0x {
+        background-color: var(--licorice);
+        height: 1070px;
+        left: 0px;
+        mix-blend-mode: normal;
+        position: absolute;
+        top: 0px;
+        width: 1919px;
+      }
+
+      .desktop-1 .group-1-Ys8k0x {
+        background-color: transparent;
+        height: 23px;
+        left: 1106px;
+        position: absolute;
+        top: 64px;
+        width: 622px;
+      }
+
+      .desktop-1 .home-xdqVJv {
+        background-color: transparent;
+        color: #ffc700;
+        font-family: var(--font-family-inter);
+        font-size: var(--font-size-s);
+        font-style: normal;
+        font-weight: 700;
+        height: auto;
+        left: 0px;
+        letter-spacing: 2.61px;
+        line-height: normal;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: left;
+        left: 180px;
+        top: 0px;
+      }
+
+      .desktop-1 .about-xdqVJv {
+        background-color: transparent;
+        height: auto;
+        left: 153px;
+        letter-spacing: 2.61px;
+        line-height: normal;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: left;
+        top: -0px;
+        width: 77px;
+      }
+
+      .desktop-1 .project-xdqVJv {
+        background-color: transparent;
+        height: auto;
+        left: 319px;
+        letter-spacing: 2.61px;
+        line-height: normal;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: left;
+        top: -0px;
+        width: 103px;
+      }
+
+      .desktop-1 .contact-xdqVJv {
+        background-color: transparent;
+        height: auto;
+        left: 508px;
+        letter-spacing: 2.61px;
+        line-height: normal;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: left;
+        top: -0px;
+        width: 107px;
+      }
+
+      .desktop-1 .rectangle-2-Ys8k0x {
+        background-color: var(--licorice);
+        height: 1138px;
+        left: 0px;
+        mix-blend-mode: normal;
+        position: absolute;
+        top: 1814px;
+        width: 1919px;
+      }
+
+      .desktop-1 .frame-Ys8k0x {
+        background-color: transparent;
+        height: 69px;
+        left: 226px;
+        mix-blend-mode: normal;
+        position: absolute;
+        top: 41px;
+        width: 36px;
+      }
+
+      .desktop-1 .milo-Ys8k0x {
+        background-color: transparent;
+        height: 45px;
+        left: 291px;
+        mix-blend-mode: normal;
+        position: absolute;
+        top: 51px;
+        width: 100px;
+      }
+
+      .desktop-1 .virtual-world-w-nt-miss-reality-Ys8k0x {
+        background-color: transparent;
+        color: var(--white);
+        font-family: var(--font-family-noto_sans_mono);
+        font-size: var(--font-size-xxxl);
+        font-style: normal;
+        font-weight: 400;
+        height: auto;
+        left: 312px;
+        letter-spacing: 0px;
+        line-height: normal;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: center;
+        top: 478px;
+        width: 1295px;
+      }
+
+      .desktop-1 .group-2-Ys8k0x {
+        background-color: transparent;
+        height: 720px;
+        left: 220px;
+        position: absolute;
+        top: 1967px;
+        width: 1504px;
+      }
+
+      .desktop-1 .section-title-LE77Zx {
+        background-color: transparent;
+        color: var(--white);
+        font-family: var(--font-family-noto_sans_mono);
+        font-size: 64px;
+        font-style: normal;
+        font-weight: 400;
+        height: auto;
+        left: 338px;
+        letter-spacing: 0px;
+        line-height: 85.3px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: center;
+        top: 0px;
+        white-space: nowrap;
+        width: 802px;
+      }
+
+      .desktop-1 .description-LE77Zx {
+        background-color: transparent;
+        color: var(--white);
+        font-family: var(--font-family-inter);
+        font-size: var(--font-size-l);
+        font-style: normal;
+        font-weight: 400;
+        height: auto;
+        left: 380px;
+        letter-spacing: 0px;
+        line-height: 42.6px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: center;
+        top: 91px;
+        width: 720px;
+      }
+
+      .desktop-1 .feature-icons-01-LE77Zx {
+        background-color: transparent;
+        height: 44px;
+        left: 211px;
+        position: absolute;
+        top: 239px;
+        width: 44px;
+      }
+
+      .desktop-1 .headline-LE77Zx {
+        background-color: transparent;
+        height: auto;
+        left: 0px;
+        letter-spacing: 0px;
+        line-height: 42.6px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: center;
+        top: 316px;
+        white-space: nowrap;
+        width: 467px;
+      }
+
+      .desktop-1 .description-REDzWo {
+        background-color: transparent;
+        height: auto;
+        left: -0px;
+        letter-spacing: 0px;
+        line-height: 34.6px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: center;
+        top: 368px;
+        width: 466px;
+      }
+
+      .desktop-1 .x2-LE77Zx {
+        background-color: transparent;
+        border-radius: 10.66px;
+        height: 197px;
+        left: 506px;
+        mix-blend-mode: normal;
+        position: absolute;
+        top: 240px;
+        width: 466px;
+      }
+
+      .desktop-1 .feature-icons-02-D9lWjt {
+        background-color: transparent;
+        height: 44px;
+        left: 212px;
+        mix-blend-mode: normal;
+        position: absolute;
+        top: -1px;
+        width: 43px;
+      }
+
+      .desktop-1 .details-D9lWjt {
+        background-color: transparent;
+        height: 123px;
+        left: 0px;
+        overflow: hidden;
+        position: absolute;
+        top: 75px;
+        width: 466px;
+      }
+
+      .desktop-1 .headline-Eo0gty {
+        background-color: transparent;
+        height: auto;
+        left: 0px;
+        letter-spacing: 0px;
+        line-height: 42.6px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: center;
+        top: 0px;
+        white-space: nowrap;
+        width: 466px;
+      }
+
+      .desktop-1 .description-Eo0gty {
+        background-color: transparent;
+        height: auto;
+        left: -0px;
+        letter-spacing: 0px;
+        line-height: 34.6px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: center;
+        top: 53px;
+        width: 466px;
+      }
+
+      .desktop-1 .feature-icons-03-LE77Zx {
+        background-color: transparent;
+        height: 44px;
+        left: 1224px;
+        mix-blend-mode: normal;
+        position: absolute;
+        top: 239px;
+        width: 44px;
+      }
+
+      .desktop-1 .headline-REDzWo {
+        background-color: transparent;
+        height: auto;
+        left: 1013px;
+        letter-spacing: 0px;
+        line-height: 42.6px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: center;
+        top: 316px;
+        white-space: nowrap;
+        width: 467px;
+      }
+
+      .desktop-1 .description-9Kjy0n {
+        background-color: transparent;
+        height: auto;
+        left: 1013px;
+        letter-spacing: 0px;
+        line-height: 34.6px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: center;
+        top: 368px;
+        width: 466px;
+      }
+
+      .desktop-1 .feature-icons-04-LE77Zx {
+        background-color: transparent;
+        height: 44px;
+        left: 211px;
+        mix-blend-mode: normal;
+        position: absolute;
+        top: 522px;
+        width: 44px;
+      }
+
+      .desktop-1 .headline-9Kjy0n {
+        background-color: transparent;
+        height: auto;
+        left: 0px;
+        letter-spacing: 0px;
+        line-height: 42.6px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: center;
+        top: 588px;
+        white-space: nowrap;
+        width: 467px;
+      }
+
+      .desktop-1 .description-Ek2BD8 {
+        background-color: transparent;
+        height: auto;
+        left: -0px;
+        letter-spacing: 0px;
+        line-height: 34.6px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: center;
+        top: 650px;
+        width: 466px;
+      }
+
+      .desktop-1 .feature-icons-05-LE77Zx {
+        background-color: transparent;
+        height: 44px;
+        left: 718px;
+        mix-blend-mode: normal;
+        position: absolute;
+        top: 522px;
+        width: 43px;
+      }
+
+      .desktop-1 .headline-Ek2BD8 {
+        background-color: transparent;
+        height: auto;
+        left: 507px;
+        letter-spacing: 0px;
+        line-height: 42.6px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: center;
+        top: 588px;
+        white-space: nowrap;
+        width: 467px;
+      }
+
+      .desktop-1 .description-xstFm2 {
+        background-color: transparent;
+        height: auto;
+        left: 506px;
+        letter-spacing: 0px;
+        line-height: 34.6px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: center;
+        top: 650px;
+        width: 466px;
+      }
+
+      .desktop-1 .feature-icons-08-LE77Zx {
+        background-color: transparent;
+        height: 44px;
+        left: 1224px;
+        mix-blend-mode: normal;
+        position: absolute;
+        top: 522px;
+        width: 44px;
+      }
+
+      .desktop-1 .headline-xstFm2 {
+        background-color: transparent;
+        height: auto;
+        left: 1013px;
+        letter-spacing: 0px;
+        line-height: 42.6px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: center;
+        top: 588px;
+        white-space: nowrap;
+        width: 467px;
+      }
+
+      .desktop-1 .description-8xQW7B {
+        background-color: transparent;
+        height: auto;
+        left: 1013px;
+        letter-spacing: 0px;
+        line-height: 34.6px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: center;
+        top: 650px;
+        width: 466px;
+      }
+
+      .desktop-1 .milo-is-a-web-a-ould-in-reality-Ys8k0x {
+        background-color: transparent;
+        color: #000000;
+        font-family: var(--font-family-inter);
+        font-size: var(--font-size-xxl);
+        font-style: normal;
+        font-weight: 300;
+        height: auto;
+        left: 337px;
+        letter-spacing: 0px;
+        line-height: 70px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: center;
+        top: 1343px;
+        width: 1246px;
+      }
+
+      .desktop-1 .quote-mark-Ys8k0x {
+        background-color: transparent;
+        height: 161px;
+        left: 219px;
+        position: absolute;
+        top: 3070px;
+        width: 192px;
+      }
+
+      .desktop-1 .testimonial-1-Ys8k0x {
+        background-color: var(--white);
+        border-radius: 10.66px;
+        box-shadow: 0px 13.326388359069824px 26.65277671813965px #29292a12;
+        height: 453px;
+        left: 979px;
+        mix-blend-mode: normal;
+        overflow: hidden;
+        position: absolute;
+        top: 3209px;
+        width: 593px;
+      }
+
+      .desktop-1 .airbnb-logo-KwESJq {
+        background-color: transparent;
+        height: 54px;
+        left: 42px;
+        mix-blend-mode: normal;
+        position: absolute;
+        top: 42px;
+        width: 174px;
+      }
+
+      .desktop-1 .content-KwESJq {
+        background-color: transparent;
+        height: 272px;
+        left: 43px;
+        overflow: hidden;
+        position: absolute;
+        top: 139px;
+        width: 508px;
+      }
+
+      .desktop-1 .quote-mark-2uxyyd {
+        background-color: transparent;
+        height: 20px;
+        left: -0px;
+        position: absolute;
+        top: -1px;
+        width: 22px;
+      }
+
+      .desktop-1 .feedback-person-details-2uxyyd {
+        background-color: transparent;
+        height: 272px;
+        left: 43px;
+        overflow: hidden;
+        position: absolute;
+        top: 0px;
+        width: 465px;
+      }
+
+      .desktop-1 .feedback-xxxMuz {
+        background-color: transparent;
+        color: var(--eerie-black);
+        font-family: var(--font-family-inter);
+        font-size: var(--font-size-l);
+        font-style: normal;
+        font-weight: 400;
+        height: auto;
+        left: 0px;
+        letter-spacing: 0px;
+        line-height: 42.6px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: left;
+        top: 0px;
+        width: 465px;
+      }
+
+      .desktop-1 .person-details-xxxMuz {
+        background-color: transparent;
+        height: 69px;
+        left: 0px;
+        overflow: hidden;
+        position: absolute;
+        top: 203px;
+        width: 152px;
+      }
+
+      .desktop-1 .jane-cooper-Ah4fId {
+        background-color: transparent;
+        height: auto;
+        left: 0px;
+        letter-spacing: 0px;
+        line-height: 37.3px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: left;
+        top: 0px;
+        white-space: nowrap;
+        width: 152px;
+      }
+
+      .desktop-1 .ceo-airbnb-Ah4fId {
+        background-color: transparent;
+        height: auto;
+        left: 0px;
+        letter-spacing: 0px;
+        line-height: 32px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: left;
+        top: 37px;
+        white-space: nowrap;
+        width: 109px;
+      }
+
+      .desktop-1 .testimonial-2-Ys8k0x {
+        background-color: var(--white);
+        border-radius: 10.66px;
+        box-shadow: 0px 13.326388359069824px 26.65277671813965px #29292a12;
+        height: 368px;
+        left: 979px;
+        mix-blend-mode: normal;
+        overflow: hidden;
+        position: absolute;
+        top: 3705px;
+        width: 466px;
+      }
+
+      .desktop-1 .book-my-show-logo-72sPpO {
+        background-color: transparent;
+        height: 54px;
+        left: 42px;
+        mix-blend-mode: normal;
+        position: absolute;
+        top: 42px;
+        width: 179px;
+      }
+
+      .desktop-1 .content-72sPpO {
+        background-color: transparent;
+        height: 187px;
+        left: 43px;
+        overflow: hidden;
+        position: absolute;
+        top: 139px;
+        width: 381px;
+      }
+
+      .desktop-1 .quote-mark-DgjsPr {
+        background-color: transparent;
+        height: 19px;
+        left: -0px;
+        position: absolute;
+        top: -0px;
+        width: 22px;
+      }
+
+      .desktop-1 .feedback-person-details-DgjsPr {
+        background-color: transparent;
+        height: 187px;
+        left: 43px;
+        overflow: hidden;
+        position: absolute;
+        top: -0px;
+        width: 338px;
+      }
+
+      .desktop-1 .feedback-Z0iF95 {
+        background-color: transparent;
+        color: var(--eerie-black);
+        font-family: var(--font-family-inter);
+        font-size: var(--font-size-l);
+        font-style: normal;
+        font-weight: 400;
+        height: auto;
+        left: 0px;
+        letter-spacing: 0px;
+        line-height: 42.6px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: left;
+        top: 0px;
+        width: 338px;
+      }
+
+      .desktop-1 .person-details-Z0iF95 {
+        background-color: transparent;
+        height: 69px;
+        left: 0px;
+        overflow: hidden;
+        position: absolute;
+        top: 117px;
+        width: 239px;
+      }
+
+      .desktop-1 .kristin-watson-xxIIEF {
+        background-color: transparent;
+        height: auto;
+        left: 0px;
+        letter-spacing: 0px;
+        line-height: 37.3px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: left;
+        top: 0px;
+        white-space: nowrap;
+        width: 175px;
+      }
+
+      .desktop-1 .co-founder-book-my-show-xxIIEF {
+        background-color: transparent;
+        height: auto;
+        left: 0px;
+        letter-spacing: 0px;
+        line-height: 32px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: left;
+        top: 37px;
+        white-space: nowrap;
+        width: 239px;
+      }
+
+      .desktop-1 .testimonial-3-Ys8k0x {
+        background-color: var(--white);
+        border-radius: 10.66px;
+        box-shadow: 0px 13.326388359069824px 26.65277671813965px #29292a12;
+        height: 624px;
+        left: 473px;
+        mix-blend-mode: normal;
+        overflow: hidden;
+        position: absolute;
+        top: 3401px;
+        width: 466px;
+      }
+
+      .desktop-1 .hubspot-logo-lyK0xu {
+        background-color: transparent;
+        height: 54px;
+        left: 42px;
+        mix-blend-mode: normal;
+        position: absolute;
+        top: 42px;
+        width: 188px;
+      }
+
+      .desktop-1 .content-lyK0xu {
+        background-color: transparent;
+        height: 442px;
+        left: 43px;
+        overflow: hidden;
+        position: absolute;
+        top: 139px;
+        width: 381px;
+      }
+
+      .desktop-1 .quote-mark-iuKSkw {
+        background-color: transparent;
+        height: 20px;
+        left: -1px;
+        position: absolute;
+        top: -1px;
+        width: 23px;
+      }
+
+      .desktop-1 .feedback-person-details-iuKSkw {
+        background-color: transparent;
+        height: 442px;
+        left: 43px;
+        overflow: hidden;
+        position: absolute;
+        top: 0px;
+        width: 338px;
+      }
+
+      .desktop-1 .feedback-R4QMKQ {
+        background-color: transparent;
+        color: var(--eerie-black);
+        font-family: var(--font-family-inter);
+        font-size: var(--font-size-l);
+        font-style: normal;
+        font-weight: 400;
+        height: auto;
+        left: 0px;
+        letter-spacing: 0px;
+        line-height: 42.6px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: left;
+        top: 0px;
+        width: 338px;
+      }
+
+      .desktop-1 .person-details-R4QMKQ {
+        background-color: transparent;
+        height: 69px;
+        left: 0px;
+        overflow: hidden;
+        position: absolute;
+        top: 373px;
+        width: 196px;
+      }
+
+      .desktop-1 .floyd-miles-s1OxnN {
+        background-color: transparent;
+        height: auto;
+        left: 0px;
+        letter-spacing: 0px;
+        line-height: 37.3px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: left;
+        top: 0px;
+        white-space: nowrap;
+        width: 135px;
+      }
+
+      .desktop-1 .vice-president-go-pro-s1OxnN {
+        background-color: transparent;
+        height: auto;
+        left: -0px;
+        letter-spacing: 0px;
+        line-height: 32px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: left;
+        top: 37px;
+        white-space: nowrap;
+        width: 196px;
+      }
+
+      .desktop-1 .section-heading-Ys8k0x {
+        background-color: transparent;
+        height: 225px;
+        left: 346px;
+        overflow: hidden;
+        position: absolute;
+        top: 3145px;
+        width: 593px;
+      }
+
+      .desktop-1 .section-heading-4UUaLj {
+        background-color: transparent;
+        height: 171px;
+        left: 0px;
+        overflow: hidden;
+        position: absolute;
+        top: 0px;
+        width: 593px;
+      }
+
+      .desktop-1 .section-title-EuRFbi {
+        background-color: transparent;
+        color: var(--eerie-black);
+        font-family: var(--font-family-inter);
+        font-size: var(--font-size-xxl);
+        font-style: normal;
+        font-weight: 800;
+        height: auto;
+        left: 0px;
+        letter-spacing: 0px;
+        line-height: 64px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: left;
+        top: 0px;
+        width: 593px;
+      }
+
+      .desktop-1 .description-4UUaLj {
+        background-color: transparent;
+        color: var(--eerie-black);
+        font-family: var(--font-family-inter);
+        font-size: var(--font-size-xs);
+        font-style: normal;
+        font-weight: 400;
+        height: auto;
+        left: 0px;
+        letter-spacing: 0px;
+        line-height: 32px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: left;
+        top: 182px;
+        width: 593px;
+      }
+
+      .desktop-1 .group-3-Ys8k0x {
+        background-color: transparent;
+        height: 442px;
+        left: 0px;
+        position: absolute;
+        top: 4240px;
+        width: 1921px;
+      }
+
+      .desktop-1 .rectangle-3-05leJS {
+        background-color: var(--licorice);
+        height: 442px;
+        left: 0px;
+        mix-blend-mode: normal;
+        position: absolute;
+        top: 0px;
+        width: 1919px;
+      }
+
+      .desktop-1 .links-05leJS {
+        background-color: transparent;
+        height: 85px;
+        left: 200px;
+        overflow: hidden;
+        position: absolute;
+        top: 187px;
+        width: 652px;
+      }
+
+      .desktop-1 .links-row-1-YP4flr {
+        background-color: transparent;
+        height: 35px;
+        left: 0px;
+        overflow: hidden;
+        position: absolute;
+        top: 0px;
+        width: 265px;
+      }
+
+      .desktop-1 .download-now-qx8AGq {
+        background-color: transparent;
+        height: auto;
+        left: 0px;
+        letter-spacing: 0px;
+        line-height: 34.6px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: left;
+        top: 0px;
+        white-space: nowrap;
+        width: 155px;
+      }
+
+      .desktop-1 .license-qx8AGq {
+        background-color: transparent;
+        height: auto;
+        left: 187px;
+        letter-spacing: 0px;
+        line-height: 34.6px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: left;
+        top: 0px;
+        white-space: nowrap;
+        width: 79px;
+      }
+
+      .desktop-1 .links-row-2-YP4flr {
+        background-color: transparent;
+        height: 35px;
+        left: 0px;
+        overflow: hidden;
+        position: absolute;
+        top: 51px;
+        width: 652px;
+      }
+
+      .desktop-1 .about-l2SmNp {
+        background-color: transparent;
+        height: auto;
+        left: 0px;
+        letter-spacing: 0px;
+        line-height: 34.6px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: left;
+        top: 0px;
+        white-space: nowrap;
+        width: 61px;
+      }
+
+      .desktop-1 .features-l2SmNp {
+        background-color: transparent;
+        height: auto;
+        left: 93px;
+        letter-spacing: 0px;
+        line-height: 34.6px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: left;
+        top: 0px;
+        white-space: nowrap;
+        width: 89px;
+      }
+
+      .desktop-1 .pricing-l2SmNp {
+        background-color: transparent;
+        height: auto;
+        left: 215px;
+        letter-spacing: 0px;
+        line-height: 34.6px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: left;
+        top: 0px;
+        white-space: nowrap;
+        width: 69px;
+      }
+
+      .desktop-1 .careers-l2SmNp {
+        background-color: transparent;
+        height: auto;
+        left: 316px;
+        letter-spacing: 0px;
+        line-height: 34.6px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: left;
+        top: 0px;
+        white-space: nowrap;
+        width: 81px;
+      }
+
+      .desktop-1 .help-l2SmNp {
+        background-color: transparent;
+        height: auto;
+        left: 429px;
+        letter-spacing: 0px;
+        line-height: 34.6px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: left;
+        top: 0px;
+        white-space: nowrap;
+        width: 48px;
+      }
+
+      .desktop-1 .privacy-policy-l2SmNp {
+        background-color: transparent;
+        height: auto;
+        left: 509px;
+        letter-spacing: 0px;
+        line-height: 34.6px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: left;
+        top: 0px;
+        white-space: nowrap;
+        width: 143px;
+      }
+
+      .desktop-1 .x2022-milo-all-rights-reserved-05leJS {
+        background-color: transparent;
+        color: #d9dbe1;
+        font-family: var(--font-family-inter);
+        font-size: var(--font-size-xs);
+        font-style: normal;
+        font-weight: 400;
+        height: auto;
+        left: 200px;
+        letter-spacing: 0px;
+        line-height: 32px;
+        mix-blend-mode: normal;
+        position: absolute;
+        text-align: left;
+        top: 306px;
+        white-space: nowrap;
+        width: 283px;
+      }
+
+      .desktop-1 .milo-05leJS {
+        background-color: transparent;
+        height: 44px;
+        left: 261px;
+        mix-blend-mode: normal;
+        position: absolute;
+        top: 100px;
+        width: 99px;
+      }
+
+      .desktop-1 .frame-05leJS {
+        background-color: transparent;
+        height: 69px;
+        left: 206px;
+        mix-blend-mode: normal;
+        position: absolute;
+        top: 90px;
+        width: 36px;
+      }
+    </style>
+    <meta name="author" content="AnimaApp.com - Design to code, Automated." />
+    <style id="action-links-styles">
+      @import url("https://fonts.googleapis.com/css2?family=Mulish&display=swap");
+
+      #anima-interface {
+        transition: all 0.5s ease-in-out;
+      }
+
+      #anima-watermark {
+        transition: all 0.5s ease-in-out;
+        display: none;
+      }
+      #anima-watermark-link {
+        position: fixed;
+        bottom: 20px;
+        height: 30px;
+        border-radius: 1000px;
+        background: #3b3b3b;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        user-select: none;
+        transition: width 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        text-decoration: none;
+        color: #fff;
+        padding: 8px 16px 8px 11px;
+        font-family: Mulish, sans-serif;
+        font-size: 12px;
+      }
+      #anima-watermark-link .text {
+        margin-left: 6px;
+      }
+
+      .omniview-anima-action-links .link {
+        height: 30px;
+        width: 30px;
+        border-radius: 1000px;
+        background: #3b3b3b;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        user-select: none;
+        transition: width 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        text-decoration: none;
+        color: #fff;
+      }
+      .omniview-anima-action-links #comment-link .text,
+      .omniview-anima-action-links #code-link .text {
+        display: none;
+        font-size: 12px;
+        margin-right: 5px;
+      }
+      .omniview-anima-action-links #comment-link:hover,
+      .omniview-anima-action-links #code-link:hover {
+        width: 105px;
+      }
+      .omniview-anima-action-links #comment-link.pop-active,
+      .omniview-anima-action-links #code-link.pop-active {
+        width: 105px;
+        background: #ff6250;
+      }
+      .omniview-anima-action-links #comment-link.pop-active .text,
+      .omniview-anima-action-links #code-link.pop-active .text {
+        display: block;
+      }
+      .omniview-anima-action-links #comment-link:hover .text,
+      .omniview-anima-action-links #code-link:hover .text {
+        display: block;
+      }
+
+      .link.navigation {
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        width: auto;
+        height: 32px;
+        color: #fff;
+        font-size: 12px;
+        cursor: default;
+        padding: 0 5px;
+      }
+      .link.navigation .icon {
+        margin: 0 6px;
+        fill: none;
+        stroke: currentColor;
+        cursor: pointer;
+      }
+      .link.navigation .icon.disabled {
+        opacity: 0.5;
+        cursor: default;
+      }
+
+      .link.navigation .home-icon {
+        margin-left: 6px;
+        fill: currentColor;
+        stroke: currentColor;
+        cursor: pointer;
+      }
+
+      .omniview-anima-action-links .restart {
+        height: 30px;
+        padding: 0 12px;
+        background: #3b3b3b;
+        border-radius: 1000px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: #f1f1f1;
+        font-size: 12px;
+      }
+
+      .omniview-anima-action-links {
+        display: flex;
+        align-items: center;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        font-family: Mulish, sans-serif;
+        transition: all 0.5s ease-in-out;
+        opacity: 1;
+      }
+
+      .omniview-anima-action-links > * + * {
+        margin-right: 0;
+        margin-left: 10px;
+      }
+
+      .idle {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      #popoverOpener {
+        position: absolute;
+        left: 50%;
+        margin-left: -10vw;
+        text-align: center;
+        top: 45vh;
+        width: 20vw;
+      }
+
+      .popover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1060;
+        display: none;
+        font-family: "sans-serif";
+        font-size: 14px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .popover.top {
+        margin-top: -12px;
+      }
+
+      .popover.right {
+        margin-left: 10px;
+      }
+
+      .popover.bottom {
+        margin-top: 10px;
+      }
+
+      .popover.left {
+        margin-left: -10px;
+      }
+
+      .popover-title {
+        padding: 8px 14px;
+        margin: 0;
+        font-size: 14px;
+        background-color: #f7f7f7;
+        border-bottom: 1px solid #ebebeb;
+        border-radius: 5px 5px 0 0;
+      }
+
+      .popover-content {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        overflow: hidden;
+        font-family: Mulish, sans-serif;
+      }
+
+      .popover > .arrow,
+      .popover > .arrow:after {
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+      }
+
+      .popover > .arrow {
+        border-width: 11px;
+      }
+
+      .popover > .arrow:after {
+        content: "";
+        border-width: 10px;
+      }
+
+      .popover.top > .arrow {
+        bottom: -11px;
+        left: 50%;
+        margin-left: -11px;
+        border-top-color: #999;
+        border-top-color: rgba(0, 0, 0, 0.25);
+        border-bottom-width: 0;
+      }
+
+      .popover.top > .arrow:after {
+        bottom: 1px;
+        margin-left: -10px;
+        content: " ";
+        border-top-color: #fff;
+        border-bottom-width: 0;
+      }
+
+      .popover.right > .arrow {
+        top: 50%;
+        left: -11px;
+        margin-top: -11px;
+        border-right-color: #999;
+        border-right-color: rgba(0, 0, 0, 0.25);
+        border-left-width: 0;
+      }
+
+      .popover.right > .arrow:after {
+        bottom: -10px;
+        left: 1px;
+        content: " ";
+        border-right-color: #fff;
+        border-left-width: 0;
+      }
+
+      .popover.bottom > .arrow {
+        top: -11px;
+        left: 50%;
+        margin-left: -11px;
+        border-top-width: 0;
+        border-bottom-color: #999;
+        border-bottom-color: rgba(0, 0, 0, 0.25);
+      }
+
+      .popover.bottom > .arrow:after {
+        top: 1px;
+        margin-left: -10px;
+        content: " ";
+        border-top-width: 0;
+        border-bottom-color: #fff;
+      }
+
+      .popover.left > .arrow {
+        top: 50%;
+        right: -11px;
+        margin-top: -11px;
+        border-right-width: 0;
+        border-left-color: #999;
+        border-left-color: rgba(0, 0, 0, 0.25);
+      }
+
+      .popover.left > .arrow:after {
+        right: 1px;
+        bottom: -10px;
+        content: " ";
+        border-right-width: 0;
+        border-left-color: #fff;
+      }
+
+      #anima-comment-popover,
+      #anima-code-popover {
+        background: #333333;
+        color: #fff;
+      }
+
+      #anima-comment-popover.top > .arrow,
+      #anima-comment-popover.top > .arrow:after,
+      #anima-code-popover.top > .arrow:after,
+      #anima-code-popover.top > .arrow {
+        border-top-color: #333;
+      }
+
+      #anima-comment-popover .btn,
+      #anima-code-popover .btn {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 6px 20px;
+        background: #ff6250;
+        color: #fff;
+        border-radius: 100px;
+        width: max-content;
+        text-decoration: none;
+      }
+
+      @media screen and (max-width: 550px) {
+        #anima-watermark-link {
+          padding: 6px !important;
+        }
+        #anima-watermark-link .text {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body
+    style="margin: 0px; background: rgb(255, 255, 255); overflow-x: hidden"
+    dark-scroll=""
+    data-new-gr-c-s-check-loaded="14.1034.0"
+    data-gr-ext-installed=""
+  >
+    <input type="hidden" id="anPageName" name="page" value="desktop-1" />
+    <div class="container-center-horizontal">
+      <div class="desktop-1 screen" data-id="173:99">
+        <div class="rectangle-1-Ys8k0x" data-id="173:100">
+          <video
+            src="pexels-engin-akyurt-7075988.mp4"
+            autoplay="true"
+            width="100%"
+          ></video>
+        </div>
+        <div class="group-1-Ys8k0x" data-id="173:106">
+          <div class="home-xdqVJv" data-id="173:101" width="300px">
+            BACKEND FOR THE APPLICATION
+          </div>
+        </div>
+        <div class="rectangle-2-Ys8k0x" data-id="187:383"></div>
+        <img
+          class="frame-Ys8k0x"
+          data-id="173:112"
+          src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/frame@2x.svg"
+          anima-src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/frame@2x.svg"
+        /><img
+          class="milo-Ys8k0x"
+          data-id="176:160"
+          src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172c744f006ecfc280e2dcf/img/milo@2x.svg"
+          anima-src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172c744f006ecfc280e2dcf/img/milo@2x.svg"
+        />
+        <h1 class="virtual-world-w-nt-miss-reality-Ys8k0x" data-id="176:161">
+          Virtual World<br />Where you don’t miss reality
+        </h1>
+        <div class="group-2-Ys8k0x" data-id="187:382">
+          <div class="section-title-LE77Zx" data-id="187:385">
+            Tailor-made features
+          </div>
+          <div class="description-LE77Zx" data-id="187:325">
+            The different modules included in our website are virtual world,
+            Gaming Interface, Multiplayer, Audio Communication, Chatting etc.
+          </div>
+          <img
+            class="feature-icons-01-LE77Zx"
+            data-id="187:357"
+            src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/feature-icons---01@2x.svg"
+            anima-src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/feature-icons---01@2x.svg"
+          />
+          <div
+            class="headline-LE77Zx notosansmono-normal-white-32px"
+            data-id="187:359"
+          >
+            Robust workflow
+          </div>
+          <div
+            class="description-REDzWo inter-normal-white-20px"
+            data-id="187:360"
+          >
+            The application creates a virtual environment where users will be
+            spawned with their own avatars.
+          </div>
+          <div class="x2-LE77Zx" data-id="187:364">
+            <img
+              class="feature-icons-02-D9lWjt"
+              data-id="187:365"
+              src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/feature-icons---02@2x.svg"
+              anima-src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/feature-icons---02@2x.svg"
+            />
+            <div class="details-D9lWjt" data-id="187:366">
+              <div
+                class="headline-Eo0gty notosansmono-normal-white-32px"
+                data-id="187:367"
+              >
+                Flexibility
+              </div>
+              <div
+                class="description-Eo0gty inter-normal-white-20px"
+                data-id="187:368"
+              >
+                It will have all the settings such as avatar designing, map
+                selection, audio permissions, etc.
+              </div>
+            </div>
+          </div>
+          <img
+            class="feature-icons-03-LE77Zx"
+            data-id="187:374"
+            src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/feature-icons---03@2x.svg"
+            anima-src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/feature-icons---03@2x.svg"
+          />
+          <div
+            class="headline-REDzWo notosansmono-normal-white-32px"
+            data-id="187:376"
+          >
+            User friendly
+          </div>
+          <div
+            class="description-9Kjy0n inter-normal-white-20px"
+            data-id="187:377"
+          >
+            Users will be able to make text-based conversations with other
+            players
+          </div>
+          <img
+            class="feature-icons-04-LE77Zx"
+            data-id="187:330"
+            src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/feature-icons---04@2x.svg"
+            anima-src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/feature-icons---04@2x.svg"
+          />
+          <div
+            class="headline-9Kjy0n notosansmono-normal-white-32px"
+            data-id="187:332"
+          >
+            Multiple layouts
+          </div>
+          <div
+            class="description-Ek2BD8 inter-normal-white-20px"
+            data-id="187:333"
+          >
+            Milo operates on a multiplayer&nbsp;&nbsp;environment where users
+            will be connected to each other with the help of web sockets.
+          </div>
+          <img
+            class="feature-icons-05-LE77Zx"
+            data-id="187:339"
+            src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/feature-icons---05@2x.svg"
+            anima-src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/feature-icons---05@2x.svg"
+          />
+          <div
+            class="headline-Ek2BD8 notosansmono-normal-white-32px"
+            data-id="187:341"
+          >
+            Better components
+          </div>
+          <div
+            class="description-xstFm2 inter-normal-white-20px"
+            data-id="187:342"
+          >
+            Virtual Money will be provided in the game which will help the users
+            in buying different products in the emulated world.
+          </div>
+          <img
+            class="feature-icons-08-LE77Zx"
+            data-id="187:348"
+            src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/feature-icons---08@2x.svg"
+            anima-src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/feature-icons---08@2x.svg"
+          />
+          <div
+            class="headline-xstFm2 notosansmono-normal-white-32px"
+            data-id="187:350"
+          >
+            Well organised
+          </div>
+          <div
+            class="description-8xQW7B inter-normal-white-20px"
+            data-id="187:351"
+          >
+            Login and Signup with email verification option will be included in
+            it for ensuring only authenticated users.
+          </div>
+        </div>
+        <div
+          class="milo-is-a-web-a-ould-in-reality-Ys8k0x"
+          data-id="187:387"
+          style="margin-top: -100px"
+        >
+          <h2 style="font-weight: bolder; font-size: larger">
+            Backend for the Application
+          </h2>
+          <br />
+          Milo is a web application which tries to bridge the gap between the
+          digital world and the real world, by creating a virtual world where
+          people can connect with like-minded folks just as they would, in
+          reality.
+        </div>
+        <img
+          class="quote-mark-Ys8k0x"
+          data-id="187:538"
+          src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/quote-mark@2x.svg"
+          anima-src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/quote-mark@2x.svg"
+        />
+        <div class="testimonial-1-Ys8k0x" data-id="187:540">
+          <img
+            class="airbnb-logo-KwESJq"
+            data-id="187:541"
+            src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/airbnb-logo@2x.svg"
+            anima-src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/airbnb-logo@2x.svg"
+          />
+          <div class="content-KwESJq" data-id="187:543">
+            <img
+              class="quote-mark-2uxyyd"
+              data-id="187:544"
+              src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/quote-mark-1@2x.svg"
+              anima-src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/quote-mark-1@2x.svg"
+            />
+            <div class="feedback-person-details-2uxyyd" data-id="187:549">
+              <div class="feedback-xxxMuz" data-id="187:550">
+                I used landify and created a landing page for my startup within
+                a week. The Landify UI Kit is simple and highly intuitive, so
+                anyone can use it.
+              </div>
+              <div class="person-details-xxxMuz" data-id="187:551">
+                <div
+                  class="jane-cooper-Ah4fId inter-bold-eerie-black-24px"
+                  data-id="187:552"
+                >
+                  Jane Cooper
+                </div>
+                <div
+                  class="ceo-airbnb-Ah4fId inter-medium-manatee-18px"
+                  data-id="187:553"
+                >
+                  CEO, Airbnb
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-2-Ys8k0x" data-id="187:554">
+          <img
+            class="book-my-show-logo-72sPpO"
+            data-id="187:555"
+            src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/bookmyshow-logo@2x.svg"
+            anima-src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/bookmyshow-logo@2x.svg"
+          />
+          <div class="content-72sPpO" data-id="187:562">
+            <img
+              class="quote-mark-DgjsPr"
+              data-id="187:563"
+              src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/quote-mark-2@2x.svg"
+              anima-src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/quote-mark-2@2x.svg"
+            />
+            <div class="feedback-person-details-DgjsPr" data-id="187:568">
+              <div class="feedback-Z0iF95" data-id="187:569">
+                Landify saved our time in designing my company page.
+              </div>
+              <div class="person-details-Z0iF95" data-id="187:570">
+                <div
+                  class="kristin-watson-xxIIEF inter-bold-eerie-black-24px"
+                  data-id="187:571"
+                >
+                  Kristin Watson
+                </div>
+                <div
+                  class="
+                    co-founder-book-my-show-xxIIEF
+                    inter-medium-manatee-18px
+                  "
+                  data-id="187:572"
+                >
+                  Co-Founder, BookMyShow
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-3-Ys8k0x" data-id="187:573">
+          <img
+            class="hubspot-logo-lyK0xu"
+            data-id="187:574"
+            src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/hubspot-logo@2x.svg"
+            anima-src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/hubspot-logo@2x.svg"
+          />
+          <div class="content-lyK0xu" data-id="187:585">
+            <img
+              class="quote-mark-iuKSkw"
+              data-id="187:586"
+              src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/quote-mark-3@2x.svg"
+              anima-src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/quote-mark-3@2x.svg"
+            />
+            <div class="feedback-person-details-iuKSkw" data-id="187:591">
+              <div class="feedback-R4QMKQ" data-id="187:592">
+                To quickly start my startup landing page design, I was looking
+                for a landing page UI Kit. Landify is one of the best landing
+                page UI kit I have come across. It’s so flexible, well organised
+                and easily editable.
+              </div>
+              <div class="person-details-R4QMKQ" data-id="187:593">
+                <div
+                  class="floyd-miles-s1OxnN inter-bold-eerie-black-24px"
+                  data-id="187:594"
+                >
+                  Floyd Miles
+                </div>
+                <div
+                  class="vice-president-go-pro-s1OxnN inter-medium-manatee-18px"
+                  data-id="187:595"
+                >
+                  Vice President, GoPro
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section-heading-Ys8k0x" data-id="187:596">
+          <div class="section-heading-4UUaLj" data-id="I187:596;1118:2557">
+            <div
+              class="section-title-EuRFbi"
+              data-id="I187:596;1118:2557;1118:2542"
+            >
+              Real Stories from Real Customers
+            </div>
+          </div>
+          <div class="description-4UUaLj" data-id="I187:596;1118:2506">
+            Get inspired by these stories.
+          </div>
+        </div>
+        <div class="group-3-Ys8k0x" data-id="248:220">
+          <div class="rectangle-3-05leJS" data-id="187:604"></div>
+          <div class="links-05leJS" data-id="187:617">
+            <div class="links-row-1-YP4flr" data-id="187:618">
+              <div
+                class="download-now-qx8AGq inter-normal-white-20px"
+                data-id="187:619"
+              >
+                Download Now
+              </div>
+              <div
+                class="license-qx8AGq inter-normal-white-20px"
+                data-id="187:620"
+              >
+                License
+              </div>
+            </div>
+            <div class="links-row-2-YP4flr" data-id="187:621">
+              <div
+                class="about-l2SmNp inter-normal-white-20px"
+                data-id="187:622"
+              >
+                About
+              </div>
+              <div
+                class="features-l2SmNp inter-normal-white-20px"
+                data-id="187:623"
+              >
+                Features
+              </div>
+              <div
+                class="pricing-l2SmNp inter-normal-white-20px"
+                data-id="187:624"
+              >
+                Pricing
+              </div>
+              <div
+                class="careers-l2SmNp inter-normal-white-20px"
+                data-id="187:625"
+              >
+                Careers
+              </div>
+              <div
+                class="help-l2SmNp inter-normal-white-20px"
+                data-id="187:626"
+              >
+                Help
+              </div>
+              <div
+                class="privacy-policy-l2SmNp inter-normal-white-20px"
+                data-id="187:627"
+              >
+                Privacy Policy
+              </div>
+            </div>
+          </div>
+          <div class="x2022-milo-all-rights-reserved-05leJS" data-id="187:628">
+            © 2022 Milo. All rights reserved
+          </div>
+          <img
+            class="milo-05leJS"
+            data-id="187:639"
+            src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172c744f006ecfc280e2dcf/img/milo-1@2x.svg"
+            anima-src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172c744f006ecfc280e2dcf/img/milo-1@2x.svg"
+          /><img
+            class="frame-05leJS"
+            data-id="187:640"
+            src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/frame-1@2x.svg"
+            anima-src="https://cdn.animaapp.com/projects/6172c738f006ecfc280e2dc9/releases/6172faf23d1e1e4adc12b7f2/img/frame-1@2x.svg"
+          />
+        </div>
+      </div>
+    </div>
+    <div id="anima-interface" data-turbolinks-permanent="true" class="idle">
+      <!---->
+      <div
+        id="anima-comment-popover"
+        class="popover top"
+        role="tooltip"
+        style="left: -205px; top: -220px"
+      >
+        <div class="arrow" style="margin-left: 128px"></div>
+        <div class="popover-content" style="align-items: center">
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              height: 100%;
+              padding: 20px;
+            "
+          >
+            <h3
+              style="
+                font-size: 18px;
+                margin-bottom: 10px;
+                font-weight: 500;
+                line-height: 26px;
+                font-family: Roslindale;
+              "
+            >
+              Leave feedback and collaborate
+            </h3>
+            <p
+              style="
+                font-size: 12px;
+                margin-bottom: 20px;
+                font-weight: 400;
+                line-height: 20px;
+              "
+            >
+              Login to your account to leave comments. Don’t have an account
+              already? Ask for access first.
+            </p>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn"
+              href="https://projects.animaapp.com/p/undefined/s/undefined?mode=comments"
+              >Add comment</a
+            >
+          </div>
+
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding-right: 20px;
+            "
+          >
+            <img
+              src="https://animaapp.s3.amazonaws.com/static/comment-illustration.svg"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        id="anima-code-popover"
+        class="popover top"
+        role="tooltip"
+        style="left: -205px; top: -220px"
+      >
+        <div class="arrow" style="margin-left: 168px"></div>
+        <div class="popover-content" style="align-items: center">
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              height: 100%;
+              padding: 20px;
+            "
+          >
+            <h3
+              style="
+                font-size: 18px;
+                margin-bottom: 10px;
+                font-weight: 500;
+                line-height: 26px;
+                font-family: Roslindale;
+              "
+            >
+              Get clean code you’ll love with Anima
+            </h3>
+            <p
+              style="
+                font-size: 12px;
+                margin-bottom: 20px;
+                font-weight: 400;
+                line-height: 20px;
+              "
+            >
+              Login and easily export HTML, React or Vue of this prototype.
+              Don’t have an account? Just ask for access.
+            </p>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn"
+              href="https://projects.animaapp.com/p/undefined/s/undefined?mode=code"
+            >
+              Get code
+            </a>
+          </div>
+
+          <img
+            src="https://animaapp.s3.amazonaws.com/static/code-illustration.svg"
+          />
+        </div>
+      </div>
+      <div class="omniview-anima-action-links" id="actions-wrap">
+        <div class="omniview-anima-action-links">
+          <div id="page-nav" class="link navigation" style="display: none">
+            <svg
+              id="homepage-icon"
+              class="home-icon"
+              width="24"
+              height="24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8.151 11a.25.25 0 01-.167-.436l4.349-3.913a.25.25 0 01.334 0l4.349 3.913a.25.25 0 01-.167.436H8.15zM16 12H9v4a1 1 0 001 1h5a1 1 0 001-1v-4z"
+                fill="#fff"
+              ></path>
+            </svg>
+
+            <svg
+              class="icon"
+              id="arrow-left"
+              width="24"
+              height="24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M15 18l-6-6 6-6"
+                stroke="#fff"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+
+            <span id="page-num"></span>
+
+            <svg
+              class="icon"
+              id="arrow-right"
+              width="24"
+              height="24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9 6l6 6-6 6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+          </div>
+
+          <a
+            class="link"
+            id="comment-link"
+            target="_blank"
+            style="display: none"
+          >
+            <span class="text">Comment</span>
+            <svg
+              width="20"
+              height="20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M4.301 15.137a.551.551 0 01.199-.55c.314-.23.554-.554.718-.965A6.015 6.015 0 014 10 6.006 6.006 0   0110.001 4 6.006 6.006 0 0116 10.001 6.006 6.006 0 019.999 16a5.98 5.98 0 01-3.095-.86 3.165 3.165 0 01-1.65.438 3.6  3.6 0 01-.57-.044c-.191-.03-.34-.186-.383-.397z"
+                fill="#fff"
+              ></path>
+            </svg>
+          </a>
+
+          <a class="link" id="code-link" target="_blank" style="display: none">
+            <span class="text">Get Code</span>
+            <svg
+              width="20"
+              height="20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 15.667a1 1 0 01-.707-1.708l3.626-3.625-3.626-3.626a1 1 0 111.415-1.415l4.333 4.333a1 1 0 010 1.414l-4.333 4.333a.993.993 0 01-.707.294zM7.333 5a1 1 0 01.707 1.708l-3.626 3.625 3.627 3.626a1 1 0 11-1.415 1.415L2.293 11.04a1 1 0 010-1.415l4.333-4.333A.992.992 0 017.333 5z"
+                fill="#fff"
+              ></path>
+            </svg>
+          </a>
+
+          <div class="restart" id="restart-btn" style="display: none">
+            <svg
+              style="margin-right: 6px"
+              width="12"
+              height="12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6 11.817A5.017 5.017 0 01.994 6.811c0-.207.169-.375.375-.375s.375.168.375.375A4.265 4.265 0 006 11.067a4.265 4.265 0 004.256-4.256A4.265 4.265 0 006 2.555a.376.376 0 01-.375-.376c0-.206.169-.374.375-.374a5.017 5.017 0 015.006 5.006A5.017 5.017 0 016 11.817z"
+                fill="#fff"
+              ></path>
+              <path
+                d="M6.75 4.237a.37.37 0 01-.263-.112l-1.65-1.65a.363.363 0 010-.525L6.487.3c.15-.15.375-.15.525 0 .15.15.15.375 0 .525L5.625 2.212 7.012 3.6c.15.15.15.375 0 .525-.056.075-.15.112-.262.112z"
+                fill="#fff"
+              ></path>
+            </svg>
+            Restart
+          </div>
+        </div>
+      </div>
+      <!---->
+    </div>
+    <div id="anima-watermark" style="display: none" class="idle">
+      <!----><a
+        id="anima-watermark-link"
+        target="_blank"
+        href="https://www.animaapp.com/?utm_source=animaapp.io&amp;utm_campaign=public-link-banner"
+        style="right: 20px; left: auto; padding: 6px"
+      >
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          id="anima-logo-icon"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          data-hotspot-id="hp-0"
+        >
+          <path
+            d="M4.09293 3.00001H16.5327C16.5484 2.99976 16.5638 3.00351 16.5776 3.01092C16.5913 3.01832 16.603 3.02913 16.6114 3.04231C16.6198 3.0555 16.6247 3.07061 16.6256 3.08622C16.6265 3.10182 16.6233 3.1174 16.6165 3.13146C15.5441 5.29706 13.9276 7.14699 11.9253 8.50009C8.69117 10.6822 5.43436 10.9075 4.09389 10.9196C4.08165 10.9198 4.06949 10.9176 4.05811 10.9131C4.04672 10.9086 4.03636 10.9019 4.02761 10.8933C4.01887 10.8848 4.01192 10.8745 4.00718 10.8633C4.00244 10.852 4 10.8399 4 10.8276V3.09198C4 3.07982 4.00241 3.06778 4.00709 3.05656C4.01177 3.04534 4.01863 3.03516 4.02728 3.02661C4.03592 3.01805 4.04617 3.0113 4.05744 3.00673C4.06871 3.00217 4.08077 2.99988 4.09293 3.00001Z"
+            fill="#FF6250"
+          ></path>
+          <path
+            d="M6.77772 17.4446C8.31182 17.4446 9.55545 16.201 9.55545 14.6669C9.55545 13.1328 8.31182 11.8892 6.77772 11.8892C5.24363 11.8892 4 13.1328 4 14.6669C4 16.201 5.24363 17.4446 6.77772 17.4446Z"
+            fill="#FFDF90"
+          ></path>
+          <path
+            d="M12.4559 17.2799C11.6701 16.9799 11.2522 16.1151 11.5185 15.3496L13.6153 9.3656C13.884 8.60003 14.7387 8.22302 15.5245 8.52299C16.3103 8.82344 16.7282 9.68772 16.4619 10.4538L14.365 16.4377C14.0964 17.2033 13.2417 17.5808 12.4559 17.2799Z"
+            fill="#3366FF"
+          ></path>
+        </svg> </a
+      ><!---->
+    </div>
+    <div id="hotspots_wrapper">
+      <div class="hotspot" id="hp-0" style="top: 0px; left: 0px"></div>
+    </div>
+  </body>
+  <grammarly-desktop-integration
+    data-grammarly-shadow-root="true"
+  ></grammarly-desktop-integration>
+</html>
