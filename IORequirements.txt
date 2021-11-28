@@ -176,5 +176,3 @@ response:
     "error": "Invalid Game"
 }
 
-
-j
