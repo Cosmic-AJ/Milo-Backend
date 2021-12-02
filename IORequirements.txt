@@ -175,5 +175,3 @@ response:
 {
     "error": "Invalid Game"
 }
-
-Fff
